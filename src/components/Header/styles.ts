@@ -38,3 +38,5 @@ export const CartButton = styled.button`
   justify-content: center;
   color: ${(props) => props.theme['yellow-dark']};
 `
+
+export const ImageContainer = styled.img``

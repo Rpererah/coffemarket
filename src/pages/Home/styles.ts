@@ -4,6 +4,10 @@ export const BannerContainer = styled.section`
   display: flex;
   justify-content: space-between;
   margin-top: 5rem;
+
+  @media (max-width: 700px) {
+    margin-top: 0rem;
+  }
 `
 export const Title = styled.h1`
   color: ${(props) => props.theme['base-title']};
@@ -46,7 +50,13 @@ export const CircleIcons = styled.span<CircleProps>`
   align-items: center;
   background-color: ${(props) => props.theme[CIRCLE_COLORS[props.colorbg]]};
   border-radius: 999px;
-  height: 32px;
-  width: 32px;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.5rem;
   color: ${(props) => props.theme.background};
+`
+export const ImageContainer = styled.img`
+  @media (max-width: 700px) {
+    display: none;
+  }
 `

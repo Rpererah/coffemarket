@@ -13,20 +13,24 @@ export const CardMenuContainer = styled.div`
   border-bottom-left-radius: 36px;
   border-top-left-radius: 6px;
   border-bottom-right-radius: 6px;
+
   img {
     margin-top: -40px;
   }
+
   p {
     font-size: 0.875rem;
     color: ${(props) => props.theme['base-label']};
     margin-bottom: 33px;
     text-align: center;
   }
+
   h3 {
     font-size: 1.25rem;
     font-family: 'Baloo 2';
   }
 `
+
 export const ChoosesContainer = styled.div`
   display: flex;
   align-items: center;
@@ -41,10 +45,12 @@ export const ChoosesContainer = styled.div`
     font-family: 'Baloo 2';
     font-weight: 800;
   }
+
   input {
     width: 72px;
     height: 38px;
   }
+
   button {
     display: flex;
     justify-content: center;
@@ -57,6 +63,7 @@ export const ChoosesContainer = styled.div`
     border: none;
   }
 `
+
 export const ContainerTags = styled.div`
   display: flex;
   justify-content: space-around;
@@ -70,7 +77,6 @@ export const TypesTags = styled.span`
   border-radius: 100px;
   height: 21px;
   padding: 8px;
-
   font-size: 0.625rem;
   font-weight: bold;
   display: flex;

@@ -2,6 +2,7 @@ import {
   BannerContainer,
   CircleContainer,
   CircleIcons,
+  ImageContainer,
   MenuItems,
   Title,
 } from './styles'
@@ -50,7 +51,7 @@ export function Home() {
           </MenuItems>
         </div>
 
-        <img src={CafeBanner} alt="" />
+        <ImageContainer src={CafeBanner} alt="" />
       </BannerContainer>
       <Menu />
     </div>

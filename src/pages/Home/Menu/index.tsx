@@ -1,6 +1,6 @@
 import CardMenu from './components/CardMenu'
 import { CardMenuItemsContainer, MenuContainer } from './styles'
-import { products } from './products'
+import { products } from './utils/products'
 export function Menu() {
   return (
     <MenuContainer>
