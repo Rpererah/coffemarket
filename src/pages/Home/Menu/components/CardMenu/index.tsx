@@ -3,23 +3,23 @@ import {
   CardMenuContainer,
   ChoosesContainer,
   ContainerTags,
+  MenuTextPrice,
   TypesTags,
 } from './styles'
-
-export interface Product {
-  id: number
-  image: string
-  typesCoffee: string[]
-  title: string
-  description: string
-  price: string
-  quantity: number
-}
+import { InputNumber } from '../../../../../components/InputNumber'
+import { Product } from '../../../../../interfaces/Product'
+import { useContext } from 'react'
+import { CartContext } from '../../../../../context/CartContext'
 
 interface CardMenuProps {
   product: Product
 }
 export default function CardMenu({ product }: CardMenuProps) {
+  const { addCart } = useContext(CartContext)
+
+  function handleAddCart() {
+    addCart(product)
+  }
   return (
     <CardMenuContainer>
       <img src={product.image} alt="" />
@@ -32,9 +32,9 @@ export default function CardMenu({ product }: CardMenuProps) {
       <h3>{product.title}</h3>
       <p>{product.description}</p>
       <ChoosesContainer>
-        R$<span>{product.price}</span>{' '}
-        <input type="number" value={product.quantity} />{' '}
-        <button>
+        R$<MenuTextPrice>{product.price}</MenuTextPrice>
+        <InputNumber oldQuantity={0} />
+        <button onClick={handleAddCart}>
           <ShoppingCart size={22} weight="fill" />
         </button>
       </ChoosesContainer>

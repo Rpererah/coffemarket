@@ -23,4 +23,14 @@ body,input,textarea,button{
     font-weight: 400;
     font-size: 1rem;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit; 
+}
+
+
 `

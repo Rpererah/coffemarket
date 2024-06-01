@@ -4,9 +4,7 @@ import {
   CurrencyDollar,
   MapPin,
   Money,
-  Trash,
 } from '@phosphor-icons/react'
-import Coffe from './../../assets/Coffes/Coffee1.svg'
 import {
   AddressContainer,
   ButtonConfirm,
@@ -16,16 +14,10 @@ import {
   HeaderPaymentInfo,
   InputLG,
   InputM,
-  InputQuantity,
   InputSM,
   InputsContainerSeparator,
   MainTitle,
   PaymentContainer,
-  PriceText,
-  ProductDetailsContainer,
-  ProductDetailsMidContainer,
-  ProductDetailsMidElementsContainer,
-  RemoverButton,
   Subtitle,
   TagTypesPayment,
   Text,
@@ -36,7 +28,11 @@ import {
   TypesPaymentContainer,
 } from './styles'
 import { NavLink } from 'react-router-dom'
+import { CardCartItem } from './components/CardCartItem'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 export function Cart() {
+  const { cart } = useContext(CartContext)
   return (
     <CartContainer>
       <FormContainer>
@@ -55,7 +51,13 @@ export function Cart() {
           </div>
           <InputLG type="text" name="" id="" placeholder="Rua" />
           <InputsContainerSeparator>
-            <InputM type="number" placeholder="Número" name="" id="" />
+            <InputM
+              type="text"
+              pattern="[0-9]*"
+              placeholder="Número"
+              name=""
+              id=""
+            />
             <InputLG type="text" name="" id="" placeholder="Complemento" />
           </InputsContainerSeparator>
           <InputsContainerSeparator>
@@ -95,37 +97,35 @@ export function Cart() {
 
       <TotalContainer>
         <MainTitle>Cafés selecionados</MainTitle>
-        <TotalContainerInfo>
-          <ProductDetailsContainer>
-            <img src={Coffe} alt="imagem do cafe tradicional" />
-            <ProductDetailsMidContainer>
-              <Subtitle>Expresso Tradicional</Subtitle>
-              <ProductDetailsMidElementsContainer>
-                <InputQuantity type="number" />
-                <RemoverButton>
-                  <Trash size={12} />
-                  <Text>REMOVER</Text>
-                </RemoverButton>
-              </ProductDetailsMidElementsContainer>
-            </ProductDetailsMidContainer>
-            <PriceText>R$ 9,90</PriceText>
-          </ProductDetailsContainer>
-          <TotalDetails>
-            <Text>Total de itens</Text>
-            <Subtitle>R$ 29,70</Subtitle>
-          </TotalDetails>
-          <TotalDetails>
-            <Text>Entrega</Text>
-            <Subtitle>R$ 3,50</Subtitle>
-          </TotalDetails>
-          <TotalDetails>
-            <TextTotal>Total</TextTotal>
-            <TextTotal>R$ 33,20</TextTotal>
-          </TotalDetails>
-          <ButtonConfirm>
-            <NavLink to="/purchase">CONFIRMAR PEDIDO</NavLink>
-          </ButtonConfirm>
-        </TotalContainerInfo>
+
+        {cart.length > 0 ? (
+          <TotalContainerInfo>
+            {cart.map((item) => (
+              <CardCartItem key={item.id} product={item} />
+            ))}
+            <TotalDetails>
+              <Text>Total de itens</Text>
+              <Subtitle>R$ 29,70</Subtitle>
+            </TotalDetails>
+            <TotalDetails>
+              <Text>Entrega</Text>
+              <Subtitle>R$ 3,50</Subtitle>
+            </TotalDetails>
+            <TotalDetails>
+              <TextTotal>Total</TextTotal>
+              <TextTotal>R$ 33,20</TextTotal>
+            </TotalDetails>
+            <ButtonConfirm>
+              <NavLink to="/purchase">CONFIRMAR PEDIDO</NavLink>
+            </ButtonConfirm>
+          </TotalContainerInfo>
+        ) : (
+          <TotalContainerInfo>
+            <TotalDetails>
+              <Text>Seu carrinho esta vazio</Text>
+            </TotalDetails>
+          </TotalContainerInfo>
+        )}
       </TotalContainer>
     </CartContainer>
   )

@@ -107,6 +107,7 @@ export const TagTypesPayment = styled.div`
   padding: 16px;
   background-color: ${(props) => props.theme['base-button']};
   border-radius: 6px;
+  cursor: pointer;
 `
 export const ProductDetailsContainer = styled.div`
   display: flex;

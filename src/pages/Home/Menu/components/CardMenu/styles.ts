@@ -38,14 +38,6 @@ export const ChoosesContainer = styled.div`
   gap: 10px;
   font-size: 0.875rem;
 
-  span {
-    flex: 1;
-    margin-right: 8px;
-    font-size: 1.5rem;
-    font-family: 'Baloo 2';
-    font-weight: 800;
-  }
-
   input {
     width: 72px;
     height: 38px;
@@ -61,9 +53,19 @@ export const ChoosesContainer = styled.div`
     background-color: ${(props) => props.theme['purple-dark']};
     color: ${(props) => props.theme['base-card']};
     border: none;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `
-
+export const MenuTextPrice = styled.span`
+  flex: 1;
+  margin-right: 8px;
+  font-size: 1.5rem;
+  font-family: 'Baloo 2';
+  font-weight: 800;
+`
 export const ContainerTags = styled.div`
   display: flex;
   justify-content: space-around;
