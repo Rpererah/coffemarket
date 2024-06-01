@@ -8,7 +8,7 @@ import {
 } from './styles'
 import { InputNumber } from '../../../../../components/InputNumber'
 import { Product } from '../../../../../interfaces/Product'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../../../../context/CartContext'
 
 interface CardMenuProps {
@@ -16,9 +16,19 @@ interface CardMenuProps {
 }
 export default function CardMenu({ product }: CardMenuProps) {
   const { addCart } = useContext(CartContext)
+  const [quantity, setQuantity] = useState(0)
 
   function handleAddCart() {
-    addCart(product)
+    const updatedProduct = { ...product, quantity }
+    console.log(updatedProduct)
+
+    addCart(updatedProduct)
+    console.log(quantity)
+  }
+
+  function handleChangeQuantity(newQuantity: number) {
+    setQuantity(newQuantity)
+    console.log(`new quantity: ${quantity}`)
   }
   return (
     <CardMenuContainer>
@@ -33,7 +43,7 @@ export default function CardMenu({ product }: CardMenuProps) {
       <p>{product.description}</p>
       <ChoosesContainer>
         R$<MenuTextPrice>{product.price}</MenuTextPrice>
-        <InputNumber oldQuantity={0} />
+        <InputNumber oldQuantity={1} onChange={handleChangeQuantity} />
         <button onClick={handleAddCart}>
           <ShoppingCart size={22} weight="fill" />
         </button>

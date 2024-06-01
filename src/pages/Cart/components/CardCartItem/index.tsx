@@ -10,16 +10,29 @@ import {
   Text,
 } from '../../styles'
 import { Product } from '../../../../interfaces/Product'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../../../context/CartContext'
 interface CardCartItemProps {
   product: Product
 }
 export function CardCartItem({ product }: CardCartItemProps) {
-  const { removeCart } = useContext(CartContext)
+  const { removeCart, changeQuantity } = useContext(CartContext)
+  const [quantity, setQuantity] = useState<number>(product.quantity)
+  const [totalOneProductPrice, setTotalOneProductPrice] = useState<number>(
+    parseFloat(product.price) * quantity,
+  )
+
+  useEffect(() => {
+    setTotalOneProductPrice(parseFloat(product.price) * quantity)
+  }, [quantity, product.price])
 
   function handleRemoveCart() {
     removeCart(product.id)
+  }
+
+  function handleChangeQuantity(newQuantity: number) {
+    setQuantity(newQuantity)
+    changeQuantity(product, newQuantity)
   }
   return (
     <ProductDetailsContainer>
@@ -27,16 +40,17 @@ export function CardCartItem({ product }: CardCartItemProps) {
       <ProductDetailsMidContainer>
         <Subtitle>{product.title}</Subtitle>
         <ProductDetailsMidElementsContainer>
-          <InputNumber oldQuantity={product.quantity} />
+          <InputNumber
+            onChange={handleChangeQuantity}
+            oldQuantity={product.quantity}
+          />
           <RemoverButton onClick={handleRemoveCart}>
             <Trash size={12} />
             <Text>REMOVER</Text>
           </RemoverButton>
         </ProductDetailsMidElementsContainer>
       </ProductDetailsMidContainer>
-      <PriceText>
-        R$ {(parseFloat(product.price) * product.quantity).toFixed(2)}
-      </PriceText>
+      <PriceText>R$ {totalOneProductPrice.toFixed(2)}</PriceText>
     </ProductDetailsContainer>
   )
 }

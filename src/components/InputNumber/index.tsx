@@ -8,17 +8,26 @@ import {
 
 interface InputNumberProps {
   oldQuantity: number
+  onChange?: (newValue: number) => void | undefined
 }
 
-export function InputNumber({ oldQuantity }: InputNumberProps) {
+export function InputNumber({ oldQuantity, onChange }: InputNumberProps) {
   const [quantity, setQuantity] = useState<number>(oldQuantity)
 
   function addQuantity() {
-    setQuantity(quantity + 1)
+    const newQuantity = quantity + 1
+    setQuantity(newQuantity)
+    if (onChange !== undefined) {
+      onChange(newQuantity)
+    }
   }
   function removeQuantity() {
-    if (quantity >= 1) {
-      setQuantity(quantity - 1)
+    if (quantity > 1) {
+      const newQuantity = quantity - 1
+      setQuantity(newQuantity)
+      if (onChange !== undefined) {
+        onChange(newQuantity)
+      }
     }
   }
   return (
