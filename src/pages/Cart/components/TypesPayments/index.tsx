@@ -1,18 +1,32 @@
-import { Bank, CreditCard, CurrencyDollar, Money } from '@phosphor-icons/react'
+import { Bank, CreditCard, Money } from '@phosphor-icons/react'
+import { Subtitle, Text } from '../../styles'
+import { FormCartContext } from '../../../../context/FormContext'
+import { useContext, useState } from 'react'
 import {
   HeaderPaymentInfo,
+  IconMap,
   PaymentContainer,
-  Subtitle,
   TagTypesPayment,
-  Text,
   TypesPaymentContainer,
-} from '../../styles'
+} from './styles'
+import { ErrorText } from '../FormAdress/styles'
 
 export function TypesPayment() {
+  const { formMethods } = useContext(FormCartContext)
+  const { register, setValue, formState } = formMethods
+  const { errors } = formState
+
+  const handlePaymentSelection = (paymentType: 'credit' | 'cash' | 'debit') => {
+    setValue('typeOfPayment', paymentType)
+    setSelectedPayment(paymentType)
+  }
+
+  const [selectedPayment, setSelectedPayment] = useState<string | null>(null)
+
   return (
     <PaymentContainer>
       <HeaderPaymentInfo>
-        <CurrencyDollar size={22} />
+        <IconMap />
         <p>
           <Subtitle>Pagamento</Subtitle>
           <Text>
@@ -21,19 +35,34 @@ export function TypesPayment() {
         </p>
       </HeaderPaymentInfo>
       <TypesPaymentContainer>
-        <TagTypesPayment>
+        <TagTypesPayment
+          selected={selectedPayment === 'credit'}
+          onClick={() => handlePaymentSelection('credit')}
+        >
           <CreditCard size={16} />
           <Text>Cartão de crédito</Text>
         </TagTypesPayment>
-        <TagTypesPayment>
+        <TagTypesPayment
+          selected={selectedPayment === 'debit'}
+          onClick={() => handlePaymentSelection('debit')}
+        >
           <Bank size={16} />
-          <Text>cartão de débito</Text>
+          <Text>Cartão de débito</Text>
         </TagTypesPayment>
-        <TagTypesPayment>
+
+        <TagTypesPayment
+          selected={selectedPayment === 'cash'}
+          onClick={() => handlePaymentSelection('cash')}
+        >
           <Money size={16} />
-          <Text>dinheiro</Text>
+          <Text>Dinheiro</Text>
         </TagTypesPayment>
+        <input
+          type="hidden"
+          {...register('typeOfPayment', { required: true })}
+        />
       </TypesPaymentContainer>
+      {errors.typeOfPayment && <ErrorText>**Campo obrigatório</ErrorText>}
     </PaymentContainer>
   )
 }

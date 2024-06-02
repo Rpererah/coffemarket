@@ -54,7 +54,11 @@ export const ChoosesContainer = styled.div`
     color: ${(props) => props.theme['base-card']};
     border: none;
     cursor: pointer;
+    transition: opacity 0.2s;
     &:hover {
+      background-color: ${(props) => props.theme.purple};
+    }
+    &:active {
       opacity: 0.8;
     }
   }

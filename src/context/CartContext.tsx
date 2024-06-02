@@ -1,13 +1,14 @@
-import { createContext, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
 import { Product } from '../interfaces/Product'
 
 interface CardContextProps {
   cart: Product[]
-  addCart: (product: Product) => void
+  addCart: (product: Product, quantity: number) => void
   removeCart: (productId: number) => void
   totalPrice: number
   totalPriceCart: (updatedCart: Product[]) => void
   changeQuantity: (product: Product, newQuantity: number) => void
+  clearCart: () => void
 }
 export const CartContext = createContext<CardContextProps>({
   cart: [],
@@ -16,16 +17,19 @@ export const CartContext = createContext<CardContextProps>({
   totalPrice: 0,
   totalPriceCart: () => {},
   changeQuantity: () => {},
+  clearCart: () => {},
 })
 
-export function CartProvider({ children }) {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Product[]>([])
   const [totalPrice, setTotalPrice] = useState(0)
-  function addCart(product: Product) {
+  function addCart(product: Product, quantity: number) {
     const existProduct = cart.find((item) => item.id === product.id)
     if (existProduct) {
       const updatedCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity } : item,
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + quantity }
+          : item,
       )
       setCart(updatedCart)
       totalPriceCart(updatedCart)
@@ -55,7 +59,10 @@ export function CartProvider({ children }) {
     )
     totalPriceCart(updatedCart)
   }
-
+  function clearCart() {
+    setCart([])
+    setTotalPrice(0)
+  }
   return (
     <CartContext.Provider
       value={{
@@ -65,6 +72,7 @@ export function CartProvider({ children }) {
         totalPrice,
         totalPriceCart,
         changeQuantity,
+        clearCart,
       }}
     >
       {children}

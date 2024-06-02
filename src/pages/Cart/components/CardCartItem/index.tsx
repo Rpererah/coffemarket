@@ -6,12 +6,11 @@ import {
   ProductDetailsMidContainer,
   ProductDetailsMidElementsContainer,
   RemoverButton,
-  Subtitle,
-  Text,
-} from '../../styles'
+} from './styles'
 import { Product } from '../../../../interfaces/Product'
 import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../../../context/CartContext'
+import { Subtitle, Text } from '../../styles'
 interface CardCartItemProps {
   product: Product
 }
@@ -50,7 +49,12 @@ export function CardCartItem({ product }: CardCartItemProps) {
           </RemoverButton>
         </ProductDetailsMidElementsContainer>
       </ProductDetailsMidContainer>
-      <PriceText>R$ {totalOneProductPrice.toFixed(2)}</PriceText>
+      <PriceText>
+        {totalOneProductPrice.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        })}
+      </PriceText>
     </ProductDetailsContainer>
   )
 }

@@ -10,7 +10,26 @@ import {
   Text,
 } from './styles'
 import { CircleIcons } from '../Home/styles'
+import { useContext } from 'react'
+import { FormCartContext } from '../../context/FormContext'
 export function Purchase() {
+  const { data } = useContext(FormCartContext)
+  const getPaymentTypeText = (paymentType: 'credit' | 'debit' | 'cash') => {
+    switch (paymentType) {
+      case 'credit':
+        return 'Cartão de Crédito'
+      case 'debit':
+        return 'Cartão de Débito'
+      case 'cash':
+        return 'Dinheiro'
+      default:
+        return ''
+    }
+  }
+
+  if (!data) {
+    return <div>Formulário não preenchido</div>
+  }
   return (
     <PurchaseContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -24,8 +43,14 @@ export function Purchase() {
               <MapPin size={16} weight="fill" />
             </CircleIcons>
             <Text>
-              Entrega em <BoldText>Rua João Daniel Martinelli, 102</BoldText>
-              <p>Farrapos - Porto Alegre, RS</p>
+              Entrega em{' '}
+              <BoldText>
+                Rua {data.adressLine1}, {data.adressNumber}
+              </BoldText>
+              <p>
+                {data.adressNeighborhood} - {data.adressCity},{' '}
+                {data.adressState}
+              </p>
             </Text>
           </InfoLayout>
           <InfoLayout>
@@ -46,7 +71,7 @@ export function Purchase() {
             <Text>
               Pagamento na entrega
               <p>
-                <BoldText>Cartão de Crédito</BoldText>
+                <BoldText>{getPaymentTypeText(data.typeOfPayment)}</BoldText>
               </p>
             </Text>
           </InfoLayout>

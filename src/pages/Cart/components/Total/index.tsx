@@ -1,22 +1,27 @@
 import { useContext } from 'react'
+import { MainTitle, Subtitle, Text } from '../../styles'
+import { CardCartItem } from '../CardCartItem'
+import { CartContext } from '../../../../context/CartContext'
 import {
   ButtonConfirm,
-  MainTitle,
-  Subtitle,
-  Text,
   TextTotal,
   TotalContainer,
   TotalContainerInfo,
   TotalDetails,
-} from '../../styles'
-import { CardCartItem } from '../CardCartItem'
-import { NavLink } from 'react-router-dom'
-import { CartContext } from '../../../../context/CartContext'
+} from './styles'
 
 export function Total() {
   const { cart, totalPrice } = useContext(CartContext)
   const tax = 3.5
-
+  const taxWithModelLocale = tax.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+  const adjustedPrice = tax + totalPrice
+  const modelCoinLocale = adjustedPrice.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
   return (
     <TotalContainer>
       <MainTitle>Cafés selecionados</MainTitle>
@@ -28,18 +33,23 @@ export function Total() {
           ))}
           <TotalDetails>
             <Text>Total de itens</Text>
-            <Subtitle>R$ {totalPrice}</Subtitle>
+            <Subtitle>
+              {totalPrice.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </Subtitle>
           </TotalDetails>
           <TotalDetails>
             <Text>Entrega</Text>
-            <Subtitle>R$ {tax}</Subtitle>
+            <Subtitle>{taxWithModelLocale}</Subtitle>
           </TotalDetails>
           <TotalDetails>
             <TextTotal>Total</TextTotal>
-            <TextTotal>R$ {tax + totalPrice}</TextTotal>
+            <TextTotal>{modelCoinLocale}</TextTotal>
           </TotalDetails>
-          <ButtonConfirm>
-            <NavLink to="/purchase">CONFIRMAR PEDIDO</NavLink>
+          <ButtonConfirm type="submit" form="formAdress">
+            CONFIRMAR PEDIDO
           </ButtonConfirm>
         </TotalContainerInfo>
       ) : (

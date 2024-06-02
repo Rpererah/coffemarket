@@ -1,4 +1,5 @@
-import { Product } from '../../components/CardMenu'
+import { Product } from '../../../../../interfaces/Product'
+
 const getImagePath = (id: number): string => `src/assets/Coffes/Coffee${id}.svg`
 export const products: Product[] = [
   {

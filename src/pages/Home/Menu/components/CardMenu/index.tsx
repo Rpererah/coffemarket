@@ -16,13 +16,13 @@ interface CardMenuProps {
 }
 export default function CardMenu({ product }: CardMenuProps) {
   const { addCart } = useContext(CartContext)
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   function handleAddCart() {
     const updatedProduct = { ...product, quantity }
     console.log(updatedProduct)
 
-    addCart(updatedProduct)
+    addCart(updatedProduct, quantity)
     console.log(quantity)
   }
 

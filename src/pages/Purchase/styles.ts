@@ -70,6 +70,7 @@ export const Text = styled.p`
 
 export const BoldText = styled.span`
   font-weight: bold;
+  text-transform: capitalize;
 `
 export const InfoLayout = styled.div`
   display: flex;
