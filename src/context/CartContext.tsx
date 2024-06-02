@@ -57,6 +57,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const updatedCart = cart.map((item) =>
       item.id === product.id ? { ...item, quantity: newQuantity } : item,
     )
+    setCart(updatedCart)
     totalPriceCart(updatedCart)
   }
   function clearCart() {

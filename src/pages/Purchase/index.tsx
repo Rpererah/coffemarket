@@ -1,5 +1,4 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
-import Motoboy from './../../assets/motoboy.svg'
 import {
   BoldText,
   InfoLayout,
