@@ -1,10 +1,10 @@
 import { Product } from '../../../../../interfaces/Product'
 
-const getImagePath = (id: number): string => `src/assets/Coffes/Coffee${id}.svg`
 export const products: Product[] = [
   {
     id: 1,
-    image: getImagePath(1),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee1.svg',
     typesCoffee: ['Tradicional', 'Com Leite'],
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
@@ -13,7 +13,8 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    image: getImagePath(2),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee2.svg',
     typesCoffee: ['Tradicional'],
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
@@ -22,7 +23,8 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    image: getImagePath(3),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee3.svg',
     typesCoffee: ['Tradicional'],
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
@@ -31,7 +33,8 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    image: getImagePath(4),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee4.svg',
     typesCoffee: ['Tradicional', 'gelado'],
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
@@ -40,7 +43,8 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    image: getImagePath(5),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee5.svg',
     typesCoffee: ['Tradicional', 'com leite'],
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -49,7 +53,8 @@ export const products: Product[] = [
   },
   {
     id: 6,
-    image: getImagePath(6),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee6.svg',
     typesCoffee: ['Tradicional', 'com leite'],
     title: 'Latte',
     description:
@@ -59,7 +64,8 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    image: getImagePath(7),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee7.svg',
     typesCoffee: ['Tradicional', 'com leite'],
     title: 'Capuccino',
     description:
@@ -69,7 +75,8 @@ export const products: Product[] = [
   },
   {
     id: 8,
-    image: getImagePath(8),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee8.svg',
     typesCoffee: ['Tradicional', 'com leite'],
     title: 'Macchiato',
     description:
@@ -79,7 +86,8 @@ export const products: Product[] = [
   },
   {
     id: 9,
-    image: getImagePath(9),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee9.svg',
     typesCoffee: ['Tradicional', 'com leite'],
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -88,7 +96,8 @@ export const products: Product[] = [
   },
   {
     id: 10,
-    image: getImagePath(10),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee10.svg',
     typesCoffee: ['especial', 'com leite'],
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
@@ -97,7 +106,8 @@ export const products: Product[] = [
   },
   {
     id: 11,
-    image: getImagePath(11),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee11.svg',
     typesCoffee: ['especial', 'alcoólico', 'gelado'],
     title: 'Cubano',
     description:
@@ -107,7 +117,8 @@ export const products: Product[] = [
   },
   {
     id: 12,
-    image: getImagePath(12),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee12.svg',
     typesCoffee: ['especial'],
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
@@ -116,7 +127,8 @@ export const products: Product[] = [
   },
   {
     id: 13,
-    image: getImagePath(13),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee13.svg',
     typesCoffee: ['especial'],
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -125,7 +137,8 @@ export const products: Product[] = [
   },
   {
     id: 14,
-    image: getImagePath(14),
+    image:
+      'https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Coffes/Coffee14.svg',
     typesCoffee: ['especial', 'alcoólico'],
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',

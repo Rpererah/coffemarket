@@ -6,7 +6,6 @@ import {
   MenuItems,
   Title,
 } from './styles'
-import CafeBanner from './../../assets/CafeBanner.svg'
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 import { Menu } from './Menu'
 export function Home() {
@@ -51,7 +50,10 @@ export function Home() {
           </MenuItems>
         </div>
 
-        <ImageContainer src={CafeBanner} alt="" />
+        <ImageContainer
+          src="https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/CafeBanner.svg"
+          alt=""
+        />
       </BannerContainer>
       <Menu />
     </div>

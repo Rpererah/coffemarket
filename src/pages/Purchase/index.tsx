@@ -78,7 +78,7 @@ export function Purchase() {
         </PurchaseInformationContainer>
 
         <img
-          src={Motoboy}
+          src="https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/motoboy.svg"
           alt="imagem ilustrativa de motoboy indo entregar seu cafe"
         />
       </PurchaseMainContainer>

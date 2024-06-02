@@ -1,5 +1,4 @@
 import { MapPin } from '@phosphor-icons/react'
-import Logo from './../../assets/Logo.svg'
 import {
   ButtonLocale,
   CartButton,
@@ -29,7 +28,10 @@ export function Header() {
     <HeaderContainer>
       <div>
         <NavLink to="/">
-          <img src={Logo} alt="" />
+          <img
+            src="https://raw.githubusercontent.com/Rpererah/coffemarket/ffdc8652ba0fda7da04ec64ee8a8560042748e4e/src/assets/Logo.svg"
+            alt=""
+          />
         </NavLink>
       </div>
 
